@@ -1,0 +1,73 @@
+﻿@model IEnumerable<Product>
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="w-75 btn-group" role="group">
+                                    <a asp-controller="Home" asp-action="Create" 
+                                class="btn btn-primary">
+                                    <i class="bi bi-pencil-square"></i>
+                                    Create
+                                </a>
+                            </div>
+<table class="table table-bordered table-striped" style="width:100%"
+    <thead>
+        <tr>
+            <th>
+                Name
+            </th>
+            <th>
+                Brand
+            </th>
+            <th>
+                Image
+            </th>
+            <th> 
+                Price
+            </th>
+            <th>
+            </th>
+            <th>
+
+            </th>
+
+        </tr>
+    </thead>
+    <tbody>
+        @foreach(var obj in Model)
+        {
+            <tr>
+                <td>
+                    @obj.Name
+                </td>
+                <td>
+                    @obj.Brand
+                </td>
+                <td>
+                        <img src="/productImage/@obj.ImageFileName" width="300">
+                </td>
+                <td>
+                    @obj.Price $
+                </td>
+                <td>
+                            <div class="w-75 btn-group" role="group">
+                                    <a asp-controller="Home" asp-action="Edit" asp-route-id="@obj.Id" 
+                                class="btn btn-primary">
+                                    <i class="bi bi-pencil-square"></i>
+                                    Edit
+                                </a>
+                            </div>
+                </td>
+                <td>
+                            <div class="w-75 btn-group" role="group" >
+                                    <a asp-controller="Home" asp-action="Delete" asp-route-id="@obj.Id" 
+                                class="btn btn-danger">
+                                    <i class="bi bi-trash3"></i>
+                                    Delete
+                                </a>
+                            </div>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
